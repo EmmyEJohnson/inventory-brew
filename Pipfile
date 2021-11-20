@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+psycopg2-binary = "*"
+pillow = "*"
+django-storages = "*"
+python-dotenv = "*"
+django-environ = "*"
+django-crispy-forms = "*"
+gunicorn = "*"
+django-heroku = "*"
+django-seed = "*"
+seed = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"
