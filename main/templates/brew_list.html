@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  {% block content_header %}
+    <h2>Brews</h2>
+    <p>
+      <a href="{% url 'upload_brew' %}" class="btn btn-primary">Upload Brew</a>
+    </p>
+  {% endblock %}
+
+  <table class="table mb-0">
+    <thead>
+      <tr>
+        <th>Brew Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Brewery</th>
+        <th>Price</th>
+        <th>Image</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for brew in brews %}
+        <tr>
+          <td>
+            {% if brew.image %}
+              <img src="{{ brew.image.url }}" alt="{{ brew.name }}" style="width:100px;">
+            {% else %}
+              <span class="text-muted">No Image</span>
+            {% endif %}
+          </td>
+          <td>{{ brew.name }}</td>
+          <td>{{ brew.type }}</td>
+          <td>
+            <a href="{{ brew.brewery.url }}" class="btn btn-primary btn-sm" target="_blank">
+              See Brewery
+            </a>
+          </td>
+          <td>
+            <form method="post" action="{% url 'delete_brew' brew.pk %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+
+
+
+
+
+
+
+
+

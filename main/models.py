@@ -25,7 +25,11 @@ class VendorProfile(models.Model):
 
 
     def __str__(self):
-	      return self.user.name
+	      return self.user.company_name
+     
+    def delete(self, *args, **kwargs):
+        self.image.delete()
+        super().delete(*args, **kwargs) 
  
     class Meta:
         ordering = ['-created_at']
@@ -34,8 +38,8 @@ class Brew(models.Model):
 
     name = models.CharField(max_length=100, null=True)
     brew_type = models.IntegerField(choices=BREW_CHOICES, default=1)
-    brewery = models.CharField(max_length=30, blank=True, null=True)
-    description = models.CharField(max_length=255, null=True)
+    brewery = models.CharField(max_length=100, blank=True, null=True)
+    description = models.CharField(max_length=1000, null=True)
     price = models.DecimalField(max_digits=5, decimal_places=2, null=True)
     image = models.ImageField(blank=True, null=True, upload_to='brew/')
     

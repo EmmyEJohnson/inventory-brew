@@ -15,6 +15,9 @@ gunicorn = "*"
 django-heroku = "*"
 django-seed = "*"
 seed = "*"
+"js.jquery" = "*"
+django-bootstrap-v5 = "*"
+django-jquery = "*"
 
 [dev-packages]
 
